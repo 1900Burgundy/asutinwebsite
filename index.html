@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1900 Burgundy — Austin Guest Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --cognac:      #9B5B35;
+      --cognac-dark: #7A4228;
+      --cognac-pale: #F5EDE5;
+      --charcoal:    #2C2C2C;
+      --charcoal-mid:#4A4A4A;
+      --warm-white:  #FAF7F4;
+      --cream:       #F2EBE1;
+      --border:      #E0D4C8;
+      --shadow:      0 2px 16px rgba(44,44,44,.09);
+      --radius:      12px;
+      --ff-head:     'Cormorant Garamond', Georgia, serif;
+      --ff-body:     'DM Sans', system-ui, sans-serif;
+      --max-w:       900px;
+      --section-gap: 72px;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--warm-white);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: rgba(250,247,244,.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    nav.scrolled {
+      border-color: var(--border);
+      box-shadow: 0 1px 12px rgba(44,44,44,.06);
+    }
+    .nav-brand {
+      font-family: var(--ff-head);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      color: var(--cognac-dark);
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--charcoal-mid);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--cognac); }
+
+    /* hide nav links on small phones — show hamburger */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 64px;
+      background-color: var(--charcoal);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Photos/hero_2400.webp');
+      background-size: cover;
+      background-position: center;
+      opacity: .45;
+    }
+    /* gradient overlay — darkens bottom for legibility */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(44,44,44,.25) 0%, rgba(44,44,44,.65) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+    }
+    .hero-eyebrow {
+      font-family: var(--ff-body);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: var(--ff-head);
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.82);
+      max-width: 420px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-family: var(--ff-body);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .25s, transform .15s;
+    }
+    .btn-primary {
+      background: var(--cognac);
+      color: #fff;
+      border: 1.5px solid var(--cognac);
+    }
+    .btn-primary:hover {
+      background: var(--cognac-dark);
+      border-color: var(--cognac-dark);
+      transform: translateY(-1px);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255,255,255,.5);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .hero-scroll span { display: block; width: 1px; height: 40px; background: rgba(255,255,255,.3); margin: 0 auto; }
+
+    /* ─── SHARED SECTION STYLES ──────────────────────────────── */
+    section { padding: 64px 24px; }
+    .section-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--cognac);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--ff-head);
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      font-size: .95rem;
+      color: var(--charcoal-mid);
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--cognac);
+      margin: 16px 0 32px;
+    }
+
+    /* ─── AT A GLANCE ────────────────────────────────────────── */
+    #glance { background: var(--cream); }
+    .glance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media (min-width: 560px) {
+      .glance-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 780px) {
+      .glance-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .glance-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .glance-icon {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+    .glance-value {
+      font-family: var(--ff-head);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--cognac-dark);
+      line-height: 1;
+    }
+    .glance-label {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--charcoal-mid);
+      margin-top: 4px;
+    }
+
+    /* ─── BEDROOM STRIP ─────────────────────────────────────── */
+    .bedroom-strip {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .bedroom-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .bed-badge {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--cognac-pale);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-head);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--cognac-dark);
+      letter-spacing: .03em;
+    }
+    .bedroom-card-info { line-height: 1.35; }
+    .bedroom-card-name {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+    .bedroom-card-detail {
+      font-size: .78rem;
+      color: var(--charcoal-mid);
+    }
+
+    /* ─── RECOMMENDATIONS ────────────────────────────────────── */
+    #recs { background: var(--warm-white); }
+
+    .rec-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .rec-filter-btn {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      font-family: var(--ff-body);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--charcoal-mid);
+      cursor: pointer;
+      transition: all .18s;
+      white-space: nowrap;
+    }
+    .rec-filter-btn:hover { border-color: var(--cognac); color: var(--cognac); }
+    .rec-filter-btn.active {
+      background: var(--cognac);
+      border-color: var(--cognac);
+      color: #fff;
+    }
+
+    .rec-list { display: flex; flex-direction: column; }
+
+    .rec-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .rec-item:first-child { border-top: 1px solid var(--border); }
+    .rec-item.hidden { display: none; }
+
+    .rec-item-main { flex: 1; min-width: 0; }
+    .rec-item-name {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .rec-item-meta { display: block; }
+    .rec-item-desc {
+      font-size: .78rem;
+      color: var(--charcoal-mid);
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .rec-item-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .rec-item-dist {
+      font-size: .75rem;
+      color: var(--charcoal-mid);
+      white-space: nowrap;
+    }
+    .rec-item-map {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--cognac);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+    .rec-item-map:hover { color: var(--cognac-dark); }
+
+    .rec-empty {
+      display: none;
+      padding: 32px 0;
+      text-align: center;
+      font-size: .9rem;
+      color: var(--charcoal-mid);
+    }
+
+    /* ─── HOUSE RULES ────────────────────────────────────────── */
+    #rules { background: var(--cream); }
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 640px) {
+      .rules-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .rule-block {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 22px 24px;
+    }
+    .rule-block-title {
+      font-family: var(--ff-head);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .rule-block-title .icon { font-size: 1.2rem; }
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .rule-list li {
+      font-size: .88rem;
+      color: var(--charcoal-mid);
+      padding-left: 18px;
+      position: relative;
+    }
+    .rule-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--cognac);
+      font-size: .8rem;
+    }
+
+    /* ─── CHECK-IN ───────────────────────────────────────────── */
+    #checkin { background: var(--warm-white); }
+    .checkin-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 12px;
+    }
+    .checkin-step {
+      display: flex;
+      gap: 20px;
+      padding: 0 0 32px;
+      position: relative;
+    }
+    .checkin-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 44px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--cognac-pale);
+      border: 1.5px solid var(--cognac);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-head);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--cognac-dark);
+    }
+    .step-body { padding-top: 8px; }
+    .step-title {
+      font-family: var(--ff-head);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      font-size: .88rem;
+      color: var(--charcoal-mid);
+      line-height: 1.6;
+    }
+    .info-box {
+      background: var(--cognac-pale);
+      border-left: 3px solid var(--cognac);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 18px;
+      margin-top: 28px;
+      font-size: .88rem;
+      color: var(--charcoal);
+    }
+    .info-box strong { color: var(--cognac-dark); }
+
+    /* checkin times */
+    .time-strip {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .time-card {
+      flex: 1;
+      min-width: 140px;
+      background: var(--cognac-pale);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+    }
+    .time-card-label {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cognac);
+      margin-bottom: 6px;
+    }
+    .time-card-value {
+      font-family: var(--ff-head);
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+
+    /* ─── CONTACTS ───────────────────────────────────────────── */
+    #contacts { background: var(--cream); }
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 560px) {
+      .contacts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .contact-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--cognac-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .contact-info { flex: 1; }
+    .contact-title {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+    .contact-subtitle {
+      font-size: .78rem;
+      color: var(--charcoal-mid);
+      margin-bottom: 8px;
+    }
+    .contact-link {
+      display: inline-block;
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--cognac);
+    }
+    .contact-link:hover { text-decoration: underline; }
+
+    /* emergency callout */
+    .emergency-banner {
+      background: #4A1919;
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .emergency-banner .em-icon { font-size: 1.8rem; }
+    .emergency-banner .em-text { font-size: .9rem; line-height: 1.5; }
+    .emergency-banner strong { font-size: 1.1rem; display: block; margin-bottom: 2px; }
+
+    /* ─── UTILITIES ──────────────────────────────────────────── */
+    #utilities { background: var(--warm-white); }
+    .util-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 600px) {
+      .util-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .util-row {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .util-name {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .util-value {
+      font-size: .88rem;
+      color: var(--charcoal-mid);
+      text-align: right;
+    }
+    .util-value a { color: var(--cognac); }
+
+    /* ─── CTA ───────────────────────────────────────────────── */
+    .cta-review {
+      position: relative;
+      background: url('Photos/CTA_2400.webp') center center / cover no-repeat;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .cta-review::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 18, 10, 0.52);
+    }
+    .cta-review-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .cta-review .cta-eyebrow {
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .cta-review .cta-heading {
+      font-family: var(--ff-head);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .cta-review .cta-sub {
+      font-size: .9rem;
+      color: rgba(255,255,255,.75);
+      line-height: 1.65;
+    }
+    .cta-book {
+      background: var(--cognac-pale);
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .cta-book-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .cta-book .cta-eyebrow {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cognac);
+      margin-bottom: 12px;
+    }
+    .cta-book .cta-heading {
+      font-family: var(--ff-head);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+    .cta-book .cta-sub {
+      font-size: .9rem;
+      color: var(--charcoal-mid);
+      line-height: 1.65;
+    }
+    .cta-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 13px 32px;
+      background: var(--cognac);
+      color: #fff;
+      border-radius: 100px;
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      transition: background .2s;
+    }
+    .cta-btn:hover { background: var(--cognac-dark); }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.55);
+      text-align: center;
+      padding: 36px 24px;
+      font-size: .8rem;
+    }
+    footer strong { color: rgba(255,255,255,.8); }
+
+    /* ─── REC FILTER HELPER ──────────────────────────────────── */
+    .rec-item.hidden { display: none; }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav">
+  <span class="nav-brand">1900 Burgundy</span>
+  <ul class="nav-links">
+    <li><a href="#glance">The Home</a></li>
+    <li><a href="#recs">Explore</a></li>
+    <li><a href="#rules">House Rules</a></li>
+    <li><a href="#contacts">Contacts</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home">
+  <!-- Replace [HERO_PHOTO_URL] in the CSS above with your actual photo URL -->
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Austin, Texas · Lamplight Village</p>
+    <h1 class="hero-title">Welcome to<br><em>1900 Burgundy</em></h1>
+    <p class="hero-tagline">Three bedrooms, a plunge pool, and the warmth of home — your private retreat in North Austin.</p>
+    <a href="#glance" class="btn btn-primary">Explore Your Stay</a>
+  </div>
+  <div class="hero-scroll">
+    scroll
+    <span></span>
+  </div>
+</section>
+
+<!-- ══════════ AT A GLANCE ══════════ -->
+<section id="glance">
+  <div class="section-inner">
+    <p class="section-label">Lamplight Village · North Austin</p>
+    <h2 class="section-title">At a Glance</h2>
+    <div class="divider"></div>
+    <div class="glance-grid">
+      <div class="glance-card">
+        <div class="glance-icon">🛏</div>
+        <div class="glance-value">3</div>
+        <div class="glance-label">Bedrooms</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">🚿</div>
+        <div class="glance-value">2½</div>
+        <div class="glance-label">Bathrooms</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">👤</div>
+        <div class="glance-value">6</div>
+        <div class="glance-label">Max Guests</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">🚗</div>
+        <div class="glance-value">4</div>
+        <div class="glance-label">Parking Spots</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">📶</div>
+        <div class="glance-value">1 Gb</div>
+        <div class="glance-label">Internet</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">⛱</div>
+        <div class="glance-value">Plunge</div>
+        <div class="glance-label">Pool</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">🔥</div>
+        <div class="glance-value">BBQ</div>
+        <div class="glance-label">Outdoor Dining</div>
+      </div>
+      <div class="glance-card">
+        <div class="glance-icon">🐾</div>
+        <div class="glance-value">No</div>
+        <div class="glance-label">Pets</div>
+      </div>
+    </div>
+
+    <!-- Bedroom breakdown -->
+    <div class="bedroom-strip">
+      <div class="bedroom-card">
+        <div class="bed-badge">K</div>
+        <div class="bedroom-card-info">
+          <div class="bedroom-card-name">Primary</div>
+          <div class="bedroom-card-detail">King · En-suite bath</div>
+        </div>
+      </div>
+      <div class="bedroom-card">
+        <div class="bed-badge">Q</div>
+        <div class="bedroom-card-info">
+          <div class="bedroom-card-name">Guest Room</div>
+          <div class="bedroom-card-detail">Queen · Shared full bath</div>
+        </div>
+      </div>
+      <div class="bedroom-card">
+        <div class="bed-badge">TT</div>
+        <div class="bedroom-card-info">
+          <div class="bedroom-card-name">Bunk Room</div>
+          <div class="bedroom-card-detail">2 Twins · Shared full bath</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDATIONS ══════════ -->
+<section id="recs">
+  <div class="section-inner">
+    <p class="section-label">Around the Neighborhood</p>
+    <h2 class="section-title">Our Favorites</h2>
+    <div class="divider"></div>
+    <p class="section-subtitle">A curated list of places we love — all within easy reach of the house.</p>
+
+    <!-- FILTER PILLS -->
+    <div class="rec-filters">
+      <button class="rec-filter-btn" data-filter="restaurant">Restaurant</button>
+      <button class="rec-filter-btn" data-filter="bbq">BBQ</button>
+      <button class="rec-filter-btn" data-filter="coffee">Coffee</button>
+      <button class="rec-filter-btn" data-filter="bar">Bar</button>
+      <button class="rec-filter-btn" data-filter="attraction">Attraction</button>
+      <button class="rec-filter-btn" data-filter="shopping">Shopping</button>
+    </div>
+
+    <!-- LIST -->
+    <div class="rec-list" id="rec-list">
+
+      <!-- ── RESTAURANTS ── -->
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/cafenoseatx" target="_blank" rel="noopener">Café No Sé</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Intimate natural wine bar with small plates on South Congress</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=1603+S+Congress+Ave+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/carnitasguero_" target="_blank" rel="noopener">Carnitas El Güero</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">No-frills, authentic carnitas beloved by locals — a true Austin gem</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~10 min</span>
+          <a href="https://maps.google.com/?q=9001+Cameron+Rd+Austin+TX" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/cuantostacos512" target="_blank" rel="noopener">Cuantos Tacos</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Beloved East Austin taqueria with creative, chef-driven tacos</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=1108+E+12th+St+Austin+TX+78702" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/elizabethstreetcafe" target="_blank" rel="noopener">Elizabeth Street Café</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Vietnamese-French café famous for bánh mì, fresh baguettes, and pastries</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=1501+S+First+St+Austin+TX" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/launderetteatx" target="_blank" rel="noopener">Launderette</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Neighborhood gem with a creative seasonal menu and excellent cocktails</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~20 min</span>
+          <a href="https://maps.google.com/?q=2115+Holly+Street+Austin+TX" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/maggianoslittleitaly" target="_blank" rel="noopener">Maggiano's</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Italian-American classics in generous portions, great for groups</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~15 min</span>
+          <a href="https://maps.google.com/?q=10910+Domain+Dr+Suite+100+Austin+TX+78758" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.northitalia.com/locations/austin-tx-the-domain/" target="_blank" rel="noopener">North Italia</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Upscale Italian at the Domain with handmade pasta and a lovely patio</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~15 min</span>
+          <a href="https://maps.google.com/?q=11506+Century+Oaks+Terrace+Austin+TX+78758" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/onlythewildones_atx" target="_blank" rel="noopener">Only The Wild Ones</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Cozy natural wine bar with rotating bottles and snacks on South Congress</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=1600+South+Congress+Ave+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/pappadeaux" target="_blank" rel="noopener">Pappadeaux</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Classic Cajun seafood — a Texas institution beloved for crawfish and gumbo</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~10 min</span>
+          <a href="https://maps.google.com/?q=11617+Research+Blvd+Austin+TX+78759" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.saltgrass.com/location/saltgrass-austin/" target="_blank" rel="noopener">Saltgrass Steak House</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Texas steakhouse staple with reliable cuts and a lively atmosphere</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~10 min</span>
+          <a href="https://maps.google.com/?q=10614+Research+Blvd+Austin+TX+78759" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/sanginesaustin" target="_blank" rel="noopener">San Ginés Austin</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Spanish-inspired café serving churros, coffee, and brunch dishes</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=2072+S+Lamar+Blvd+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="restaurant">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/tzintzuntzan.tx" target="_blank" rel="noopener">Tzintzuntzan</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Neighborhood Mexican spot in North Loop with regional dishes and mezcal</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~20 min</span>
+          <a href="https://maps.google.com/?q=2302+W+North+Loop+Blvd+Austin+TX+78756" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <!-- ── BBQ ── -->
+      <div class="rec-item" data-cat="bbq">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/interstellarbbq" target="_blank" rel="noopener">Interstellar BBQ</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Award-winning pit-smoked BBQ in northwest Austin, often ranked among the city's best</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~15 min</span>
+          <a href="https://maps.google.com/?q=12233+RR+620+N+Austin+TX+78750" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="bbq">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/la_barbecue" target="_blank" rel="noopener">La Barbecue</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Acclaimed BBQ stand with melt-in-your-mouth brisket and rotating specials</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=401+E+Cesar+Chavez+St+Austin+TX+78702" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="bbq">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/stilesswitchbbq" target="_blank" rel="noopener">Stiles Switch</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Neighborhood BBQ gem in Cedar Park with family-friendly vibes and great sides</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~20 min</span>
+          <a href="https://maps.google.com/?q=800+W+Whitestone+Blvd+Cedar+Park+TX+78613" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="bbq">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/saltlickbbq" target="_blank" rel="noopener">The Salt Lick</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Iconic open-pit BBQ in Driftwood — a rite of passage for every Austin visitor</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~45 min</span>
+          <a href="https://maps.google.com/?q=18300+RM+1826+Driftwood+TX+78619" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="bbq">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/terryblacks_bbq" target="_blank" rel="noopener">Terry Black's</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Central Texas-style BBQ on Barton Springs — long lines, worth every minute</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~30 min</span>
+          <a href="https://maps.google.com/?q=1003+Barton+Springs+Rd+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <!-- ── COFFEE ── -->
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/aholecoffee" target="_blank" rel="noopener">A Hole Coffee</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Fun, quirky East Austin café with creative drinks and a neighborhood feel</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=2312+Morelos+St+Austin+TX+78702" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.bunkhousehotels.com/carpenter-hotel" target="_blank" rel="noopener">Carpenter Coffee Bar</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Serene coffee inside the beautifully designed Carpenter Hotel</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=400+Josephine+St+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/firstlightbooks" target="_blank" rel="noopener">First Light Books</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Independent bookshop with a coffee counter and thoughtfully curated reads</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~20 min</span>
+          <a href="https://maps.google.com/?q=4300+Speedway+Austin+TX+78751" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://heavensbistrobakery.com" target="_blank" rel="noopener">Heaven's Bistro Bakery</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">French-inspired café with pastries, crêpes, and artisan coffee</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~5 min</span>
+          <a href="https://maps.google.com/?q=2205+W+Parmer+Ln+Austin+TX+78727" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://houndstoothcoffee.com" target="_blank" rel="noopener">Houndstooth Coffee</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Beloved local chain known for exceptional espresso and a great working atmosphere</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~20 min</span>
+          <a href="https://maps.google.com/?q=4200+N+Lamar+Blvd+Austin+TX+78756" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/leonacafebar" target="_blank" rel="noopener">LEONA Botanical Café and Bar</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Garden-inspired café with botanical cocktails and all-day coffee</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~30 min</span>
+          <a href="https://maps.google.com/?q=6405+Brodie+Lane+Sunset+Valley+TX" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/palominocoffee" target="_blank" rel="noopener">Palomino Coffee</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Specialty coffee in a cozy East Austin space with great natural light</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=4136+E+12th+Street+Austin+TX+78721" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <!-- ── BARS ── -->
+      <div class="rec-item" data-cat="bar">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/barpeached" target="_blank" rel="noopener">Bar Peached</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Creative Southeast Asian cocktail bar with inventive small plates</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~20 min</span>
+          <a href="https://maps.google.com/?q=1315+W+6th+St+Austin+TX+78703" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="bar">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/cosmicsaltillo" target="_blank" rel="noopener">Cosmic Saltillo</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Sprawling outdoor bar complex with live music and rotating food vendors</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~20 min</span>
+          <a href="https://maps.google.com/?q=1300+E+4th+St+Austin+TX+78702" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="bar">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://pinthouse.com" target="_blank" rel="noopener">Pinthouse Brewing</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Craft brewery with exceptional pizza and a rotating tap list of small-batch beers</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=2201+E+Ben+White+Blvd+Austin+TX+78741" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="bar">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/thevioletcrown_atx" target="_blank" rel="noopener">The Violet Crown</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Neighborhood bar in Brentwood with craft cocktails and a relaxed, unpretentious vibe</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~15 min</span>
+          <a href="https://maps.google.com/?q=7100+Woodrow+Avenue+Austin+TX+78757" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="bar">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/yardhouse" target="_blank" rel="noopener">Yardhouse</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Massive bar at the Domain with 100+ beers on tap and a full food menu</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~15 min</span>
+          <a href="https://maps.google.com/?q=11800+Domain+Blvd+Austin+TX+78758" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <!-- ── ATTRACTIONS ── -->
+      <div class="rec-item" data-cat="attraction">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://zilkergarden.org" target="_blank" rel="noopener">Botanical Garden</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">26 acres of stunning themed gardens along Barton Springs Road</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~30 min</span>
+          <a href="https://maps.google.com/?q=2220+Barton+Springs+Rd+Austin+TX+78746" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="attraction">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.lbjlibrary.org" target="_blank" rel="noopener">LBJ Presidential Library</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Fascinating museum on the UT campus chronicling LBJ's life and presidency</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~20 min</span>
+          <a href="https://maps.google.com/?q=2313+Red+River+St+Austin+TX+78705" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="attraction">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.austintexas.org/listings/walnut-creek-metro-park/10301/" target="_blank" rel="noopener">Walnut Creek Park</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Popular trail network for hiking, mountain biking, and dog walks in North Austin</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~10 min</span>
+          <a href="https://maps.google.com/?q=Walnut+Creek+Metro+Park+Austin+TX" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <!-- ── SHOPPING ── -->
+      <div class="rec-item" data-cat="shopping">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/aviatornationaustin" target="_blank" rel="noopener">Aviator Nation</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Vintage-inspired sportswear flagship on the South Congress strip</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=1325+S+Congress+Ave+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="shopping">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/stagprovisions" target="_blank" rel="noopener">Stag</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Thoughtfully curated boutique for men and women on South Congress</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=1423+S+Congress+Ave+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="shopping">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/uptowncheapskate" target="_blank" rel="noopener">Uptown Cheapskate</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Upscale resale shop with quality finds at a fraction of retail price</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~15 min</span>
+          <a href="https://maps.google.com/?q=7501+Burnet+Rd+Austin+TX+78757" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="shopping">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.instagram.com/yeti" target="_blank" rel="noopener">Yeti Flagship Store</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">The Texas cooler brand's Austin flagship with exclusive gear and apparel</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=220+S+Congress+Ave+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+    </div><!-- /rec-list -->
+    <p class="rec-empty" id="rec-empty" style="display:none;">No places in this category yet — check back soon.</p>
+
+  </div>
+</section>
+
+<!-- ══════════ HOUSE RULES ══════════ -->
+<section id="rules">
+  <div class="section-inner">
+    <p class="section-label">Before You Settle In</p>
+    <h2 class="section-title">House Rules</h2>
+    <div class="divider"></div>
+    <div class="rules-grid">
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🕐</span> Quiet Hours</div>
+        <ul class="rule-list">
+          <li>Quiet hours from 10pm to 8am daily</li>
+          <li>Please be mindful of neighbors — this is a residential street</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🚬</span> Smoking</div>
+        <ul class="rule-list">
+          <li>No smoking anywhere on the property</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🐾</span> Pets</div>
+        <ul class="rule-list">
+          <li>No pets allowed</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🎉</span> Events &amp; Guests</div>
+        <ul class="rule-list">
+          <li>Maximum 6 guests overnight</li>
+          <li>No unauthorized parties or events</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🗓️</span> Check-in &amp; Check-out</div>
+        <ul class="rule-list">
+          <li>Check-in: 4:00 PM or later</li>
+          <li>Check-out: 10:00 AM or earlier</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🔞</span> Age Requirement</div>
+        <ul class="rule-list">
+          <li>Guests must be 25 years or older to book</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">📡</span> Noise Monitoring</div>
+        <ul class="rule-list">
+          <li>This home participates in Vacasa's Good Neighbor program</li>
+          <li>Smart home technology monitors decibel levels to ensure quiet hours are respected</li>
+          <li>Privacy compliant — no personal conversations or information are recorded</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🚗</span> Parking</div>
+        <ul class="rule-list">
+          <li>4 vehicles total: 2 in the garage, 2 in the driveway</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACTS ══════════ -->
+<section id="contacts">
+  <div class="section-inner">
+    <p class="section-label">Need Help?</p>
+    <h2 class="section-title">Contacts</h2>
+    <div class="divider"></div>
+
+    <div class="emergency-banner">
+      <span class="em-icon">🚨</span>
+      <div class="em-text">
+        <strong>Emergency? Call 911 first.</strong>
+        Address for emergency services: 1900 Burgundy Cove, Austin, TX 78727
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ CTA — REVIEW ══════════ -->
+<div class="cta-review">
+  <div class="cta-review-inner">
+    <p class="cta-eyebrow">Share Your Experience</p>
+    <p class="cta-heading">Your review helps us improve</p>
+    <p class="cta-sub">We hope your stay at 1900 Burgundy was everything you needed. If you have a moment, leaving a review means the world to us.</p>
+  </div>
+</div>
+
+<!-- ══════════ CTA — BOOK ══════════ -->
+<div class="cta-book">
+  <div class="cta-book-inner">
+    <p class="cta-eyebrow">Coming Back?</p>
+    <p class="cta-heading">Book your next stay</p>
+    <p class="cta-sub">We'd love to have you again. Check availability and book directly through our listing.</p>
+    <a href="https://www.vacasa.com/unit/122620" target="_blank" class="cta-btn">View Listing ↗</a>
+  </div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <strong>1900 Burgundy</strong> · Austin, TX<br>
+  <span style="margin-top:6px;display:inline-block;">We hope you have a wonderful stay. Please reach out if you need anything at all.</span>
+</footer>
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+  // ── Nav scroll shadow ──────────────────────────────────────
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  // ── Recommendation filters ─────────────────────────────────
+  const filterBtns = document.querySelectorAll('.rec-filter-btn');
+  const recItems   = document.querySelectorAll('.rec-item');
+  const recEmpty   = document.getElementById('rec-empty');
+  let   activeFilter = 'restaurant';
+
+  function applyFilter(filter) {
+    let visible = 0;
+    recItems.forEach(item => {
+      const show = !filter || item.dataset.cat === filter;
+      item.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    recEmpty.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  // Apply default on load
+  applyFilter(activeFilter);
+  document.querySelector('[data-filter="restaurant"]').classList.add('active');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      if (activeFilter === filter) {
+        // deselect — show all
+        activeFilter = null;
+        filterBtns.forEach(b => b.classList.remove('active'));
+      } else {
+        activeFilter = filter;
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+
+      applyFilter(activeFilter);
+    });
+  });
+</script>
+
+</body>
+</html>
