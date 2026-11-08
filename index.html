@@ -417,8 +417,8 @@
     }
     .rule-block-title {
       font-family: var(--ff-head);
-      font-size: 1.1rem;
-      font-weight: 500;
+      font-size: 1.25rem;
+      font-weight: 600;
       margin-bottom: 12px;
       color: var(--charcoal);
       display: flex;
@@ -438,6 +438,7 @@
       padding-left: 18px;
       position: relative;
     }
+    .rule-list li strong { font-weight: 700; color: var(--charcoal); }
     .rule-list li::before {
       content: '—';
       position: absolute;
@@ -538,6 +539,25 @@
     }
 
     /* ─── CONTACTS ───────────────────────────────────────────── */
+    /* ─── POOL ───────────────────────────────────────────────── */
+    #pool { background: var(--warm-white); }
+    #pool .rule-block { background: var(--cream); }
+    #pool .rule-block-alert {
+      background: #F7E3DE;
+      border-color: #E6BFB4;
+    }
+    #pool .rule-block-alert .rule-block-title { color: #7A2A1F; }
+    #pool .rule-block-alert .rule-list li { color: #5A3530; }
+    #pool .rule-block-alert .rule-list li::before { color: #A8402F; }
+    @media (min-width: 640px) {
+      .rule-block-wide { grid-column: 1 / -1; }
+      .rule-block-wide .rule-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 32px;
+        row-gap: 8px;
+      }
+    }
     #contacts { background: var(--cream); }
     .contacts-grid {
       display: grid;
@@ -745,6 +765,7 @@
     <li><a href="#glance">The Home</a></li>
     <li><a href="#recs">Explore</a></li>
     <li><a href="#rules">House Rules</a></li>
+    <li><a href="#pool">Pool</a></li>
     <li><a href="#contacts">Contacts</a></li>
   </ul>
 </nav>
@@ -865,27 +886,14 @@
       <!-- ── RESTAURANTS ── -->
       <div class="rec-item" data-cat="restaurant">
         <div class="rec-item-main">
-          <div class="rec-item-name"><a href="https://www.instagram.com/cafenoseatx" target="_blank" rel="noopener">Café No Sé</a></div>
-          <div class="rec-item-meta">
-            <span class="rec-item-desc">Intimate natural wine bar with small plates on South Congress</span>
-          </div>
-        </div>
-        <div class="rec-item-right">
-          <span class="rec-item-dist">~25 min</span>
-          <a href="https://maps.google.com/?q=1603+S+Congress+Ave+Austin+TX+78704" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
-        </div>
-      </div>
-
-      <div class="rec-item" data-cat="restaurant">
-        <div class="rec-item-main">
           <div class="rec-item-name"><a href="https://www.instagram.com/carnitasguero_" target="_blank" rel="noopener">Carnitas El Güero</a></div>
           <div class="rec-item-meta">
             <span class="rec-item-desc">No-frills, authentic carnitas beloved by locals — a true Austin gem</span>
           </div>
         </div>
         <div class="rec-item-right">
-          <span class="rec-item-dist">~10 min</span>
-          <a href="https://maps.google.com/?q=9001+Cameron+Rd+Austin+TX" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+          <span class="rec-item-dist">~5 min</span>
+          <a href="https://maps.google.com/?q=2309+W+Parmer+Ln+Austin+TX+78727" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
         </div>
       </div>
 
@@ -1010,7 +1018,7 @@
         <div class="rec-item-main">
           <div class="rec-item-name"><a href="https://www.instagram.com/tzintzuntzan.tx" target="_blank" rel="noopener">Tzintzuntzan</a></div>
           <div class="rec-item-meta">
-            <span class="rec-item-desc">Neighborhood Mexican spot in North Loop with regional dishes and mezcal</span>
+            <span class="rec-item-desc">Daytime Mexican brunch spot and bakery from the team behind Fonda San Miguel</span>
           </div>
         </div>
         <div class="rec-item-right">
@@ -1042,7 +1050,7 @@
         </div>
         <div class="rec-item-right">
           <span class="rec-item-dist">~25 min</span>
-          <a href="https://maps.google.com/?q=401+E+Cesar+Chavez+St+Austin+TX+78702" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+          <a href="https://maps.google.com/?q=2401+E+Cesar+Chavez+St+Austin+TX+78702" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
         </div>
       </div>
 
@@ -1096,6 +1104,19 @@
         <div class="rec-item-right">
           <span class="rec-item-dist">~25 min</span>
           <a href="https://maps.google.com/?q=2312+Morelos+St+Austin+TX+78702" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://www.barrettscoffee.com" target="_blank" rel="noopener">Barrett's Coffee</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Longtime North Austin roaster with house-roasted beans and a cozy, laid-back shop</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~15 min</span>
+          <a href="https://maps.google.com/?q=713+W+St+Johns+Ave+Austin+TX+78752" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
         </div>
       </div>
 
@@ -1177,20 +1198,33 @@
         </div>
       </div>
 
-      <!-- ── BARS ── -->
-      <div class="rec-item" data-cat="bar">
+      <div class="rec-item" data-cat="coffee">
         <div class="rec-item-main">
-          <div class="rec-item-name"><a href="https://www.instagram.com/barpeached" target="_blank" rel="noopener">Bar Peached</a></div>
+          <div class="rec-item-name"><a href="https://www.spokesmancoffee.com" target="_blank" rel="noopener">Spokesman Coffee</a></div>
           <div class="rec-item-meta">
-            <span class="rec-item-desc">Creative Southeast Asian cocktail bar with inventive small plates</span>
+            <span class="rec-item-desc">Colorful, art-covered roaster café inside the Crux Climbing Center in Highland</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~15 min</span>
+          <a href="https://maps.google.com/?q=6015+Dillard+Cir+Austin+TX+78752" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="coffee">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://maps.google.com/?q=Terrible+Love+3908+Avenue+B+Austin+TX" target="_blank" rel="noopener">Terrible Love</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Tiny Hyde Park coffee bar in the Baker Center — try the grapefruit brown sugar latte</span>
           </div>
         </div>
         <div class="rec-item-right">
           <span class="rec-item-dist">~20 min</span>
-          <a href="https://maps.google.com/?q=1315+W+6th+St+Austin+TX+78703" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+          <a href="https://maps.google.com/?q=3908+Avenue+B+Austin+TX+78751" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
         </div>
       </div>
 
+      <!-- ── BARS ── -->
       <div class="rec-item" data-cat="bar">
         <div class="rec-item-main">
           <div class="rec-item-name"><a href="https://www.instagram.com/cosmicsaltillo" target="_blank" rel="noopener">Cosmic Saltillo</a></div>
@@ -1221,7 +1255,7 @@
         <div class="rec-item-main">
           <div class="rec-item-name"><a href="https://www.instagram.com/thevioletcrown_atx" target="_blank" rel="noopener">The Violet Crown</a></div>
           <div class="rec-item-meta">
-            <span class="rec-item-desc">Neighborhood bar in Brentwood with craft cocktails and a relaxed, unpretentious vibe</span>
+            <span class="rec-item-desc">Crestview coffee shop by day, natural wine bar by night — relaxed and neighborly</span>
           </div>
         </div>
         <div class="rec-item-right">
@@ -1246,6 +1280,19 @@
       <!-- ── ATTRACTIONS ── -->
       <div class="rec-item" data-cat="attraction">
         <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://library.austintexas.gov/central/about" target="_blank" rel="noopener">Austin Central Library</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Striking downtown library with reading porches, a café, and views over Shoal Creek and Lady Bird Lake</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~25 min</span>
+          <a href="https://maps.google.com/?q=710+W+Cesar+Chavez+St+Austin+TX+78701" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="attraction">
+        <div class="rec-item-main">
           <div class="rec-item-name"><a href="https://zilkergarden.org" target="_blank" rel="noopener">Botanical Garden</a></div>
           <div class="rec-item-meta">
             <span class="rec-item-desc">26 acres of stunning themed gardens along Barton Springs Road</span>
@@ -1254,6 +1301,19 @@
         <div class="rec-item-right">
           <span class="rec-item-dist">~30 min</span>
           <a href="https://maps.google.com/?q=2220+Barton+Springs+Rd+Austin+TX+78746" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
+        </div>
+      </div>
+
+      <div class="rec-item" data-cat="attraction">
+        <div class="rec-item-main">
+          <div class="rec-item-name"><a href="https://cotaland.com" target="_blank" rel="noopener">COTALAND</a></div>
+          <div class="rec-item-meta">
+            <span class="rec-item-desc">Brand-new theme park at Circuit of the Americas with 30+ rides — hours vary, so check before you go</span>
+          </div>
+        </div>
+        <div class="rec-item-right">
+          <span class="rec-item-dist">~40 min</span>
+          <a href="https://maps.google.com/?q=COTALAND+Circuit+of+the+Americas+Austin+TX" target="_blank" rel="noopener" class="rec-item-map">Directions ↗</a>
         </div>
       </div>
 
@@ -1351,10 +1411,34 @@
     <div class="rules-grid">
 
       <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🗓️</span> Check-in &amp; Check-out</div>
+        <ul class="rule-list">
+          <li>Check-in: 4:00 PM or later</li>
+          <li>Check-out: 10:00 AM or earlier</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
         <div class="rule-block-title"><span class="icon">🕐</span> Quiet Hours</div>
         <ul class="rule-list">
           <li>Quiet hours from 10pm to 8am daily</li>
           <li>Please be mindful of neighbors — this is a residential street</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🎉</span> Events &amp; Guests</div>
+        <ul class="rule-list">
+          <li>Maximum 6 guests overnight</li>
+          <li><strong>NO</strong> unauthorized parties or events</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">📡</span> Noise Monitoring</div>
+        <ul class="rule-list">
+          <li>Smart home technology monitors decibel levels to ensure quiet hours are respected</li>
+          <li>Privacy compliant — no personal conversations or information are recorded</li>
         </ul>
       </div>
 
@@ -1373,22 +1457,6 @@
       </div>
 
       <div class="rule-block">
-        <div class="rule-block-title"><span class="icon">🎉</span> Events &amp; Guests</div>
-        <ul class="rule-list">
-          <li>Maximum 6 guests overnight</li>
-          <li>No unauthorized parties or events</li>
-        </ul>
-      </div>
-
-      <div class="rule-block">
-        <div class="rule-block-title"><span class="icon">🗓️</span> Check-in &amp; Check-out</div>
-        <ul class="rule-list">
-          <li>Check-in: 4:00 PM or later</li>
-          <li>Check-out: 10:00 AM or earlier</li>
-        </ul>
-      </div>
-
-      <div class="rule-block">
         <div class="rule-block-title"><span class="icon">🔞</span> Age Requirement</div>
         <ul class="rule-list">
           <li>Guests must be 25 years or older to book</li>
@@ -1396,18 +1464,72 @@
       </div>
 
       <div class="rule-block">
-        <div class="rule-block-title"><span class="icon">📡</span> Noise Monitoring</div>
+        <div class="rule-block-title"><span class="icon">🚗</span> Parking</div>
         <ul class="rule-list">
-          <li>This home participates in Vacasa's Good Neighbor program</li>
-          <li>Smart home technology monitors decibel levels to ensure quiet hours are respected</li>
-          <li>Privacy compliant — no personal conversations or information are recorded</li>
+          <li>4 vehicles total: 2 in the garage, 2 in the driveway</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ POOL ══════════ -->
+<section id="pool">
+  <div class="section-inner">
+    <p class="section-label">Take a Dip</p>
+    <h2 class="section-title">Pool Rules</h2>
+    <div class="divider"></div>
+    <div class="rules-grid">
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🕗</span> Pool Hours</div>
+        <ul class="rule-list">
+          <li>Open daily from 8:00 AM to 10:00 PM</li>
+          <li>The plunge pool is not heated</li>
+          <li>The pool crew cleans the pool on Wednesdays</li>
+          <li>After the crew finishes, the pool is closed for 3 hours while the chemicals settle</li>
         </ul>
       </div>
 
       <div class="rule-block">
-        <div class="rule-block-title"><span class="icon">🚗</span> Parking</div>
+        <div class="rule-block-title"><span class="icon">🧰</span> Care &amp; Equipment</div>
         <ul class="rule-list">
-          <li>4 vehicles total: 2 in the garage, 2 in the driveway</li>
+          <li>Pool towels are in the closet beside the downstairs half bath</li>
+          <li>Please don't add chemicals or adjust the pool equipment</li>
+          <li>Notice cloudy water or a filter that won't run? Let your host know</li>
+          <li>Dry off before coming inside — wet floors are slippery</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">☀️</span> Before You Swim</div>
+        <ul class="rule-list">
+          <li>Remove the pool cover</li>
+          <li>Turn the filter on about 15 minutes before getting in</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="rule-block-title"><span class="icon">🌙</span> After You Swim</div>
+        <ul class="rule-list">
+          <li>Turn the filter off</li>
+          <li>Fold the umbrella</li>
+          <li>Put the pool cover back on</li>
+        </ul>
+      </div>
+
+      <div class="rule-block rule-block-wide rule-block-alert">
+        <div class="rule-block-title"><span class="icon">⚠️</span> Safety</div>
+        <ul class="rule-list">
+          <li>No lifeguard on duty — guests use the plunge pool at their own risk, including any exposure to pool chemicals</li>
+          <li>Entering the pool during the 3-hour closure after Wednesday maintenance is entirely at the guest's own risk</li>
+          <li>Children must be supervised by an adult at all times</li>
+          <li>No diving or jumping</li>
+          <li>Maximum 4 people in the pool at a time</li>
+          <li>No glass in or around the pool — plastic cups and cans only</li>
+          <li>Stay out of the pool during thunderstorms or lightning</li>
+          <li>No swimming under the influence of alcohol</li>
         </ul>
       </div>
 
